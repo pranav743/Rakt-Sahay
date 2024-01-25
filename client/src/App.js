@@ -25,7 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/new-profile" exact element={<NewProfile />} />
-          <Route path="/profile" exact element={<Profile />} />
+          <Route path="/user-profile" exact element={<Profile />} />
           {/* <Route path="/" exact element={<Splash />} />
            */}
           {/* <Route path="/login-screen" exact component={LoginScreen} />

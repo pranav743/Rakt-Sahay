@@ -5,6 +5,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Box,
 } from "@chakra-ui/react";
 
 const Profile = () => {

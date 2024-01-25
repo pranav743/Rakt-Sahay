@@ -49,7 +49,7 @@ const NewProfile = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col gap-4 items-center">
@@ -112,6 +112,7 @@ const NewProfile = () => {
           className="p-3 rounded-xl border-b-2 border-solid border-[#EA3A60] outline-none text-xl w-3/4 max-w-md"
           name="city"
           id=""
+          onChange={(e) => setCity(e.target.value)}
         >
           <option value="">City</option>
           {state !== "" &&
@@ -130,10 +131,15 @@ const NewProfile = () => {
         className="p-3 rounded-xl border-b-2 border-solid border-[#EA3A60] outline-none text-xl w-3/4 max-w-md"
         name="bloodType"
         id=""
+        onChange={(e) => setBloodGroup(e.target.value)}
       >
         <option value="">Blood Group</option>
         {bloodgroup.map((group, index) => {
-          return <option value={group}>{group}</option>;
+          return (
+            <option key={index} value={group}>
+              {group}
+            </option>
+          );
         })}
       </select>
       <input
@@ -145,7 +151,10 @@ const NewProfile = () => {
         id=""
         value={details.idCardNumber}
       />
-      <button onClick={createUser} className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold">
+      <button
+        onClick={createUser}
+        className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold"
+      >
         Submit
       </button>
     </div>

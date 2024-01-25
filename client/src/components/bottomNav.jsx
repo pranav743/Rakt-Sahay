@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // importing the icons
 import { AiFillHome } from "react-icons/ai";
@@ -8,7 +9,8 @@ import { MdPersonSearch } from "react-icons/md";
 import { BsCardChecklist } from "react-icons/bs";
 import { IoMdPerson } from "react-icons/io";
 
-const BottomNav = ({ selection = "Home" }) => {
+const BottomNav = () => {
+  const [selection, setSelection] = useState("Home");
   const location = useLocation();
   console.log(location.pathname);
   const checkPage = () => {
@@ -25,18 +27,22 @@ const BottomNav = ({ selection = "Home" }) => {
     {
       icon: AiFillHome,
       name: "Home",
+      link: "/",
     },
     {
       icon: MdPersonSearch,
       name: "Donate",
+      link: "/donate",
     },
     {
       icon: BsCardChecklist,
       name: "Request",
+      link: "/request",
     },
     {
       icon: IoMdPerson,
       name: "Profile",
+      link: "/user-profile",
     },
   ];
 
@@ -46,17 +52,20 @@ const BottomNav = ({ selection = "Home" }) => {
         <ul className="flex justify-around">
           {menu.map((item) => {
             return (
-              <li
-                key={item.name}
-                className="flex flex-col justify-center items-center"
-              >
-                <Icon
-                  as={item.icon}
-                  color={selection === item.name ? "red.500" : ""}
-                  boxSize={6}
-                />{" "}
-                {item.name}
-              </li>
+              <NavLink to={item.link}>
+                <li
+                  onClick={() => setSelection(item.name)}
+                  key={item.name}
+                  className="flex flex-col justify-center items-center"
+                >
+                  <Icon
+                    as={item.icon}
+                    color={selection === item.name ? "red.500" : ""}
+                    boxSize={6}
+                  />{" "}
+                  {item.name}
+                </li>
+              </NavLink>
             );
           })}
         </ul>

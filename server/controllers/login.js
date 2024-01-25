@@ -178,8 +178,22 @@ const getUserWithAccessToken = async (req, res) => {
   }
 };
 
+const registerUser = async (req, res) => {
+    try {
+        var data = req.body;
+        console.log(data);
+        const emergencyRequest = new User(data);
+        await emergencyRequest.save();
+        return res.status(200).json({ success: true, msg: "Request Posted SuccessFully" });
+    } catch (error) {
+        console.log(`${error.message} (error)`.red);
+        return res.status(400).json({ success: false, msg: error.message });
+    }
+};
+
 module.exports = {
   handleLoginRequest,
   callbackCheck,
   getUserWithAccessToken,
+  registerUser
 };

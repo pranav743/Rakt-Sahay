@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
+import axios from "axios";
 import { bloodgroup, places } from "./data";
+import { url } from "../../Global/URL";
 
 const NewProfile = () => {
   const location = useLocation();
@@ -29,6 +30,26 @@ const NewProfile = () => {
     bloodType: bloodGroup,
     idCardNumber: idCardNumber,
   };
+
+  const createUser = async () => {
+    try {
+      let Userdetails = {
+        name: name,
+        email: email,
+        contact_no: number,
+        address: address,
+        state: state,
+        city: city,
+        bloodType: bloodGroup,
+        idCardNumber: idCardNumber,
+      };
+      console.log(Userdetails);
+      const res = axios.post(url + "/register-user", Userdetails);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="flex flex-col gap-4 items-center">
@@ -124,7 +145,7 @@ const NewProfile = () => {
         id=""
         value={details.idCardNumber}
       />
-      <button className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold">
+      <button onClick={createUser} className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold">
         Submit
       </button>
     </div>

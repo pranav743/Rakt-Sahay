@@ -119,8 +119,8 @@ const NewProfile = () => {
         onChange={(e) => setIdCardNumber(e.target.value)}
         className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
         type="text"
-        name="email"
-        placeholder="Enter your email id..."
+        name="idCardNumber"
+        placeholder="Enter your ID Card Number..."
         id=""
         value={details.idCardNumber}
       />

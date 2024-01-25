@@ -26,6 +26,7 @@ function App() {
           <Route path="/profile" exact component={ProfilePage} /> */}
           </Routes>
         </Wrapper>
+        <BottomNav />
       </Router>
     </div>
   );

@@ -27,7 +27,7 @@ const BottomNav = ({ selection = "Home" }) => {
     },
   ];
   return (
-    <div className="bottom-navbar p-4 mb-2 border-solid border-red-500 border-t-2 fixed w-full bottom-0">
+    <div className="bottom-navbar p-4 bg-white mb-2 border-solid border-red-500 border-t-2 fixed w-full bottom-0">
       <ul className="flex justify-around">
         {menu.map((item) => {
           return (

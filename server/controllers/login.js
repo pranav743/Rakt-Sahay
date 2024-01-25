@@ -63,7 +63,6 @@ const callbackCheck = async (req, res) => {
 
         console.log(payload);
 
-        // Extract user information
         const sub_id = payload['sub'];
         const name = payload['name'];
         const email = payload['email'];

@@ -1,8 +1,7 @@
 import React from "react";
-import BottomNav from "../components/bottomNav";
 
 const Splash = () => {
-  return <BottomNav />;
+  return <div>Splash Screen</div>;
 };
 
 export default Splash;

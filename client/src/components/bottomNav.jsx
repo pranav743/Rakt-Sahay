@@ -42,7 +42,7 @@ const BottomNav = ({ selection = "Home" }) => {
 
   return (
     checkPage() && (
-      <div className="bottom-navbar p-4 bg-white mb-2 border-solid border-red-500 border-t-2 fixed w-full bottom-0">
+      <div className="bottom-navbar p-4 bg-white pb-4 border-solid border-[#EA3A60] border-t-4 rounded-t-3xl fixed w-full bottom-0">
         <ul className="flex justify-around">
           {menu.map((item) => {
             return (

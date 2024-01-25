@@ -2,6 +2,9 @@ const { OAuth2Client } = require('google-auth-library');
 const dotenv = require('dotenv');
 dotenv.config();
 const { findUser } = require("../global/findUser");
+const Hospital = require("../models/hospital");
+const BloodBank = require("../models/bloodBank");
+const User = require("../models/users");
 
 
 
@@ -68,6 +71,50 @@ const callbackCheck = async (req, res) => {
         const name = payload['name'];
         const email = payload['email'];
         const picture = payload['picture'];
+        const user = await findUser({email});
+
+        if (!user){
+            const userInfo = {
+                sub_id: sub_id,
+                name: name,
+                email: email,
+                profilePicture: picture,
+            }
+            const encodedUserInfo = encodeURIComponent(JSON.stringify(userInfo));
+            const redirectURL = process.env.CLIENT_URL + `/new-profile?userInfo=${encodedUserInfo}`;
+            res.redirect(redirectURL);
+        }
+        else {
+            var updatedUser = await User.findOneAndUpdate(
+                {email},
+                { $set: {
+                    'sub_id': sub_id,
+                    'profilePicture': picture,
+                    'name': name
+                },},
+                {new: true,}
+            );
+            if(!updatedUser){
+                updatedUser = await Hospital.findOneAndUpdate(
+                    {email},
+                    { $set: {
+                        'sub_id': sub_id,
+                        'profilePicture': picture,
+                    },},
+                    {new: true,}
+                );
+            }
+            if(!updatedUser){
+                updatedUser = await BloodBank.findOneAndUpdate(
+                    {email},
+                    { $set: {
+                        'sub_id': sub_id,
+                        'profilePicture': picture,
+                    },},
+                    {new: true,}
+                );
+            }
+        }
 
         return res.redirect(`${process.env.CLIENT_URL}/redirection/${accessToken}`);
 

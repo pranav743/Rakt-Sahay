@@ -1,6 +1,6 @@
 import React from 'react'
-import { HiOutlineBellAlert } from "react-icons/hi2";
 import {Tag,Flex,Avatar,TagLabel,Stack} from '@chakra-ui/react'
+import { HiOutlineBellAlert } from "react-icons/hi2";
 
 const Home = () => {
   return (
@@ -16,8 +16,7 @@ const Home = () => {
         />
         <TagLabel>Welcome,Vishal</TagLabel>
         </Tag>
-        <HiOutlineBellAlert />
-
+         <HiOutlineBellAlert size={15} color='black'/>
        </Flex>
 
      </Stack>

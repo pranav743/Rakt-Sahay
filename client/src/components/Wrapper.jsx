@@ -54,6 +54,7 @@ const Wrapper = ({ children }) => {
         backgroundColor: '#eee',
         position: 'relative',
         padding:'10px',
+        maxHeight: 'calc(100vh - 82px)',
       }}
     >
       {children}

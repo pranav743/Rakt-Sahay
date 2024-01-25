@@ -83,7 +83,7 @@ const callbackCheck = async (req, res) => {
       const encodedUserInfo = encodeURIComponent(JSON.stringify(userInfo));
       const redirectURL =
         process.env.CLIENT_URL + `/new-profile?userInfo=${encodedUserInfo}`;
-      res.redirect(redirectURL);
+      return res.redirect(redirectURL);
     } else {
       var updatedUser = await User.findOneAndUpdate(
         { email },

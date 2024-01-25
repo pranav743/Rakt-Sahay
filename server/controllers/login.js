@@ -77,9 +77,54 @@ const callbackCheck = async (req, res) => {
     }
 };
 
+const getUserWithAccessToken = async (req, res) => {
+
+    try {
+        const accessToken = req.body.accessToken;
+        const redirectUrl = process.env.SERVER_URL + '/api/callback';
+        const oAuth2Client = new OAuth2Client(
+            process.env.CLIENT_ID,
+            process.env.CLIENT_SECRET,
+            redirectUrl,
+        );
+        const ticket = await oAuth2Client.verifyIdToken({ idToken: accessToken, audience: process.env.CLIENT_ID });
+        const payload = ticket.getPayload();
+        // console.log(payload);
+
+        const currentTimestamp = Date.now(); 
+        const givenTimestampInSeconds = payload.exp;
+        const givenTimestampInMilliseconds = givenTimestampInSeconds * 1000; 
+
+        if (currentTimestamp > givenTimestampInMilliseconds) {
+            return res.status(500).json({ success: false, msg: "Your Session Has Expired" });
+        }
+
+        const sub_id = payload['sub'];
+        const email = payload['email'];
+        const user = await findUser(email);
+
+        if (!user) {
+            console.log("User Does not exist")
+            return res.status(200).json({ success: false, msg: `User Doesn't Exist` });
+        }
+
+        // const flag = user._doc.isActive;
+        // if (!flag){
+        //     return res.status(500).json({ success: false, msg: "Account is Deactivated" });
+        // }
+
+        return res.status(200).json({ success: true, msg: user });
+
+    } catch (error) {
+        console.log(`${error.message} (error)`.red);
+        return res.status(500).json({ success: false, msg: error.message });
+    }
+}
+
 
 
 module.exports = {
     handleLoginRequest,
-    callbackCheck
+    callbackCheck,
+    getUserWithAccessToken
 }

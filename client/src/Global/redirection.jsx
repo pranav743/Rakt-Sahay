@@ -13,15 +13,25 @@ const RedirectionPage = () => {
     const getUser = async () => {
         try {
             const data = await axios.post(url + "/anyuser", {accessToken});
-            navigate('/home');           
+            const role = data.data.msg.role;
+            if (role === 'USER'){
+                navigate('/home');
+            } else if( role === 'HOSPITAL'){
+                navigate('/hospital/home');
+            } else if( role === 'BLOODBANK'){
+                navigate('/blood-bank/home');
+            } else {
+                console.log("NO ROLE");
+                navigate('/login');
+            }      
         } catch (error) {
             console.log(error);
-            localStorage.removeItem('IMPaccessToken');
-            window.location.href = url + "/login";
+            localStorage.removeItem('RSaccessToken');
+            navigate('/login');
         }
     }
     useEffect(()=>{
-        localStorage.setItem('IMPaccessToken', accessToken);
+        localStorage.setItem('RSaccessToken', accessToken);
         getUser();
     });
 

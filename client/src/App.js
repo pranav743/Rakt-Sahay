@@ -10,13 +10,15 @@ import {
 // import Splash from "./screens/splash";
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
       <Router>
-        <Routes>
-          {/* <Route path="/" exact element={<Splash />} /> */}
-          {/* <Route path="/login-screen" exact component={LoginScreen} />
+        <Wrapper>
+          <Routes>
+            {/* <Route path="/" exact element={<Splash />} /> */}
+            {/* <Route path="/login-screen" exact component={LoginScreen} />
           <Route path="/login" exact component={LoginPage} />
           <Route path="/sign-up" exact component={SignUpPage} />
           <Route component={BottomNav}>
@@ -26,7 +28,8 @@ function App() {
             <Route path="/profile" exact component={ProfilePage} />
           </Route> */}
           <Route path="/" element={<Login/>}/>
-        </Routes>
+          </Routes>
+        </Wrapper>
       </Router>
   );
 }

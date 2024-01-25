@@ -1,16 +1,23 @@
 import React from "react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { bloodgroup, places } from "./data";
 
 const NewProfile = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const encodedUserInfo = queryParams.get("userInfo");
+  const userInfo = JSON.parse(decodeURIComponent(encodedUserInfo));
+
+  const name = userInfo.name;
+  const email = userInfo.email;
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
+  const [idCardNumber, setIdCardNumber] = useState("");
 
   const details = {
     name: name,
@@ -20,6 +27,7 @@ const NewProfile = () => {
     state: state,
     city: city,
     bloodType: bloodGroup,
+    idCardNumber: idCardNumber,
   };
 
   return (
@@ -28,13 +36,22 @@ const NewProfile = () => {
         Complete your Profile
       </h1>
       <input
-        onChange={(e) => setName(e.target.value)}
+        readOnly
         className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
         type="text"
         name="name"
         placeholder="Enter your full name..."
         id=""
         value={details.name}
+      />
+      <input
+        readOnly
+        className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
+        type="text"
+        name="email"
+        placeholder="Enter your email id..."
+        id=""
+        value={details.email}
       />
       <input
         onChange={(e) => setNumber(e.target.value)}
@@ -44,15 +61,6 @@ const NewProfile = () => {
         placeholder="Enter your phone number..."
         id=""
         value={details.number}
-      />
-      <input
-        onChange={() => setEmail()}
-        className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
-        type="text"
-        name="email"
-        placeholder="Enter your email id..."
-        id=""
-        value={details.email}
       />
       <textarea
         onChange={(e) => setAddress(e.target.value)}
@@ -107,6 +115,15 @@ const NewProfile = () => {
           return <option value={group}>{group}</option>;
         })}
       </select>
+      <input
+        onChange={(e) => setIdCardNumber(e.target.value)}
+        className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
+        type="text"
+        name="email"
+        placeholder="Enter your email id..."
+        id=""
+        value={details.idCardNumber}
+      />
       <button className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold">
         Submit
       </button>

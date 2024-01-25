@@ -11,6 +11,7 @@ import {
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
 import NewProfile from "./screens/newProfile/newProfile";
+import Profile from "./screens/Profile/Profile";
 import BottomNav from "./components/bottomNav";
 import Wrapper from "./components/Wrapper";
 import RedirectionPage from "./Global/redirection";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/new-profile" exact element={<NewProfile />} />
+          <Route path="/user-profile" exact element={<Profile />} />
           {/* <Route path="/" exact element={<Splash />} />
            */}
           {/* <Route path="/login-screen" exact component={LoginScreen} />
@@ -31,7 +33,6 @@ function App() {
             <Route path="/home" exact component={HomePage} />
             <Route path="/find-donor" exact component={FindDonorPage} />
             <Route path="/request-donor" exact component={RequestDonorPage} />
-            <Route path="/profile" exact component={ProfilePage} />
           </Route> */}
           {/* <Route
             path="/redirection/:accessToken"

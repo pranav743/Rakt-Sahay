@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {url} from './URL';
-import Loader from '../components/loader/Loader';
+import Loader from '../components/Loader';
 
 
 const RedirectionPage = () => {

@@ -10,7 +10,7 @@ import {
 // import Splash from "./screens/splash";
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
-import NewProfile from "./screens/newProfile";
+import NewProfile from "./screens/newProfile/newProfile";
 import BottomNav from "./components/bottomNav";
 import Wrapper from "./components/Wrapper";
 import RedirectionPage from "./Global/redirection";
@@ -21,9 +21,11 @@ function App() {
     <Router>
       <Wrapper>
         <Routes>
-          <Route path="/" exact element={<Splash />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path="/new-profile" exact component={<NewProfile />} />
+          <Route path="/new-profile" exact element={<NewProfile />} />
+          {/* <Route path="/" exact element={<Splash />} />
+           */}
           {/* <Route path="/login-screen" exact component={LoginScreen} />
           <Route component={BottomNav}>
             <Route path="/home" exact component={HomePage} />
@@ -31,10 +33,10 @@ function App() {
             <Route path="/request-donor" exact component={RequestDonorPage} />
             <Route path="/profile" exact component={ProfilePage} />
           </Route> */}
-          <Route
+          {/* <Route
             path="/redirection/:accessToken"
             element={<RedirectionPage />}
-          />
+          /> */}
         </Routes>
       </Wrapper>
       <BottomNav />

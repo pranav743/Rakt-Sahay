@@ -71,7 +71,7 @@ const callbackCheck = async (req, res) => {
         const name = payload['name'];
         const email = payload['email'];
         const picture = payload['picture'];
-        const user = await findUser({email});
+        const user = await findUser(email);
 
         if (!user){
             const userInfo = {

@@ -14,6 +14,8 @@ const BottomNav = ({ selection = "Home" }) => {
   const checkPage = () => {
     if (location.pathname === "/login") {
       return false;
+    } else if (location.pathname === "/new-profile") {
+      return false;
     } else {
       return true;
     }

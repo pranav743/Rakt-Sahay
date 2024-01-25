@@ -55,7 +55,7 @@ const Home = () => {
                     src={Donate}
                     alt='Donate Blood'
                    objectFit='contain'
-                   width='60%'
+                   width='40%'
                    margin='auto'
                   />
                   <Stack mt='2' spacing='0'>
@@ -72,7 +72,7 @@ const Home = () => {
                     alt='Green double couch with wooden legs'
                     borderRadius='lg'
                    objectFit='contain'
-                   width='60%'
+                   width='40%'
                    margin='auto'
                   />
                   <Stack mt='2' spacing='3'>

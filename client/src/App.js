@@ -11,6 +11,7 @@ import {
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
 import Wrapper from "./components/Wrapper";
+import RedirectionPage from "./Global/redirection";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/profile" exact component={ProfilePage} />
           </Route> */}
           <Route path="/" element={<Login/>}/>
+          <Route path="/redirection/:accessToken" element={<RedirectionPage />} />
           </Routes>
         </Wrapper>
       </Router>

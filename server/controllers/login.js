@@ -1,6 +1,7 @@
 const { OAuth2Client } = require('google-auth-library');
 const dotenv = require('dotenv');
 dotenv.config();
+const { findUser } = require("../global/findUser");
 
 
 
@@ -68,7 +69,7 @@ const callbackCheck = async (req, res) => {
         const email = payload['email'];
         const picture = payload['picture'];
 
-        return res.redirect(process.env.SERVER_URL);
+        return res.redirect(`${process.env.CLIENT_URL}/redirection/${accessToken}`);
 
     } catch (err) {
         console.error('Error in callback check:', err);

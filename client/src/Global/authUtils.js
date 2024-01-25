@@ -2,12 +2,12 @@ import axios from 'axios'
 import { url } from './URL';
 
 export const setAuthToken = (token) => {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('RSaccessToken', token);
 };
 
 export const logout = async () => {
     try {
-        localStorage.removeItem('IMPaccessToken');
+        localStorage.removeItem('RSaccessToken');
         window.location.assign(url + '/logout');
         window.location.reload();
     } catch (error) {
@@ -18,7 +18,7 @@ export const logout = async () => {
 
 
 export const getAuthToken = () => {
-    return localStorage.getItem('IMPaccessToken');
+    return localStorage.getItem('RSaccessToken');
 };
 
 
@@ -50,12 +50,12 @@ export const getUserDetails = async () => {
             const userDetails = response.data;
             return userDetails.msg._doc;
         } else {
-            localStorage.removeItem('IMPaccessToken');
+            localStorage.removeItem('RSaccessToken');
             return false;
         }
     } catch (error) {
         console.error('Error fetching user details:', error.message);
-        localStorage.removeItem('IMPaccessToken');
+        localStorage.removeItem('RSaccessToken');
         return false;
     }
 };

@@ -53,6 +53,7 @@ const Wrapper = ({ children }) => {
         overflowY: 'auto',
         backgroundColor: '#eee',
         position: 'relative',
+        padding:'10px',
       }}
     >
       {children}

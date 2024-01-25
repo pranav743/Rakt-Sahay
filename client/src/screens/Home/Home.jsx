@@ -5,7 +5,7 @@ import { HiOutlineBellAlert } from "react-icons/hi2";
 const Home = () => {
   return (
      <Stack backgroundColor='yellow'>
-       <Flex >
+       <Flex justify='space-between'>
        <Tag size='lg' colorScheme='green' borderRadius='8px'>
         <Avatar
             src='https://bit.ly/sage-adebayo'
@@ -16,7 +16,7 @@ const Home = () => {
         />
         <TagLabel>Welcome,Vishal</TagLabel>
         </Tag>
-         <HiOutlineBellAlert size={15} color='black'/>
+         <HiOutlineBellAlert size={30} color='black'/>
        </Flex>
 
      </Stack>

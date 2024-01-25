@@ -21,9 +21,9 @@ function App() {
     <Router>
       <Wrapper>
         <Routes>
-          <Route path="/" exact element={<Splash />} />
+          {/* <Route path="/" exact element={<Splash />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path="/new-profile" exact component={<NewProfile />} />
+          <Route path="/new-profile" exact component={<NewProfile />} /> */}
           {/* <Route path="/login-screen" exact component={LoginScreen} />
           <Route component={BottomNav}>
             <Route path="/home" exact component={HomePage} />
@@ -31,10 +31,11 @@ function App() {
             <Route path="/request-donor" exact component={RequestDonorPage} />
             <Route path="/profile" exact component={ProfilePage} />
           </Route> */}
-          <Route
+          {/* <Route
             path="/redirection/:accessToken"
             element={<RedirectionPage />}
-          />
+          /> */}
+          <Route path='/' element={<Home/>}/>
         </Routes>
       </Wrapper>
       <BottomNav />

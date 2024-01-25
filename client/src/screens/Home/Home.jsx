@@ -9,9 +9,6 @@ import Donate from '../../Images/Donate (2).png'
 import Request from '../../Images/Request.png'
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
-
-
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -19,7 +16,7 @@ const Home = () => {
   return (
      <Stack backgroundColor=''>
        <Flex justify='space-between'>
-       <Tag size='lg' colorScheme='pink' borderRadius='8px'>
+       <Tag size='lg' colorScheme='red' borderRadius='8px'>
         <Avatar
             src='https://bit.ly/sage-adebayo'
             size='xs'
@@ -27,7 +24,7 @@ const Home = () => {
             ml={-1}
             mr={2}
         />
-        <TagLabel>Welcome,Vishal</TagLabel>
+        <TagLabel className='font-bold'>Welcome,Vishal</TagLabel>
         </Tag>
          <HiOutlineBellAlert size={30} color='#EA3A60'/>
        </Flex>
@@ -102,7 +99,7 @@ const Home = () => {
               </Stack>
           </CardBody>
           <CardFooter>
-              <Button variant='solid' colorScheme='pink' w='100%'>
+              <Button variant='solid' colorScheme='red' w='100%'>
               Donate Row
               </Button>
           </CardFooter>

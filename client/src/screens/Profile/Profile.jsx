@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -7,12 +7,53 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { url } from "../../Global/URL";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader";
+import { getUserDetails } from "../../Global/authUtils";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const [role, setRole] = useState(false);
+  const { isError, isLoading, data } = useQuery({
+      queryKey: [`/user/profile/info`],
+      retryDelay: 5000,
+      retry: false,
+      queryFn: async () => {
+          const accessToken = localStorage.getItem("RSaccessToken");
+          const data = await getUserDetails();
+          console.log(data);
+          return data;
+      }
+  });
+
+  const onError = () => {
+    localStorage.removeItem('RSaccessToken');
+    navigate('/login');
+  }
+  
+  if (isLoading){
+    return (
+      <Loader/>
+    );
+  } else if (isError || !data.email){
+    
+    return (
+      <>
+        <h3 style={{marginTop: '50px', width: '100%', textAlign: 'center'}}>Something Went Wrong :(</h3>
+        <h2 onClick={onError} style={{marginTop: '50px', width: '100%', textAlign: 'center', color: 'blue'}}>Try Again</h2>
+      </>
+
+    )
+  }
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-4xl font-bold text-center my-4">Profile</h1>
-      <div className="pic size-40 rounded-full border-2 border-solid border-[#EA3A60] my-3"></div>
+      <div style={{overflow: 'hidden'}} className="pic size-40 rounded-full border-2 border-solid border-[#EA3A60] my-3">
+        <img src={data.profilePicture} height={'100%'} width={'100%'} alt="Not Found" />
+      </div>
       <div className="accordian w-full max-w-sm mt-4 text-xl">
         <Accordion allowToggle>
           <AccordionItem>

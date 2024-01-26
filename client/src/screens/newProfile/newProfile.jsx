@@ -13,6 +13,8 @@ const NewProfile = () => {
 
   const name = userInfo.name;
   const email = userInfo.email;
+  const profilePicture = userInfo.profilePicture;
+  const sub_id = userInfo.sub_id;
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
@@ -29,6 +31,8 @@ const NewProfile = () => {
     city: city,
     bloodType: bloodGroup,
     idCardNumber: idCardNumber,
+    profilePicture,
+    sub_id
   };
 
   const createUser = async () => {
@@ -44,7 +48,7 @@ const NewProfile = () => {
         idCardNumber: idCardNumber,
       };
       console.log(Userdetails);
-      const res = axios.post(url + "/register-user", Userdetails);
+      const res = await axios.post(url + "/register-user", Userdetails);
       console.log(res.data);
     } catch (error) {
       console.log(error);

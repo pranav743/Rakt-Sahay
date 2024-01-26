@@ -23,10 +23,11 @@ function App() {
     <Router>
       <Wrapper>
         <Routes>
-          <Route path="/" element={<DonateBlood />} />
-          {/* <Route path="/login" exact element={<Login />} />
+          <Route path="/donate" element={<DonateBlood />} />
+          <Route path={'/login'} exact element={<Login />} />
+          <Route path={'/'} exact element={<Login />} />
           <Route path="/new-profile" exact element={<NewProfile />} />
-          <Route path="/user-profile" exact element={<Profile />} /> */}
+          <Route path="/user-profile" exact element={<Profile />} />
           {/* <Route path="/" exact element={<Splash />} />
            */}
           {/* <Route path="/login-screen" exact component={LoginScreen} />

@@ -14,6 +14,7 @@ const RedirectionPage = () => {
         try {
             const data = await axios.post(url + "/anyuser", {accessToken});
             const role = data.data.msg.role;
+            console.log(role);
             if (role === 'USER'){
                 navigate('/home');
             } else if( role === 'HOSPITAL'){
@@ -36,8 +37,7 @@ const RedirectionPage = () => {
     });
 
     return (
-        <div style={{ height: '100%', width: '100%', minHeight: '100%', maxWidth: '100%', maxHeight: '100%', overflowY: 'hidden', padding: 10}}>
-            {accessToken}
+        <div style={{ height: '100%', width: '100%', minHeight: '500px', maxWidth: '100%', maxHeight: '100%', overflowY: 'hidden', padding: 10, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Loader/>
         </div>
     );

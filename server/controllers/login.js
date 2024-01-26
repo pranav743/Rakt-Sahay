@@ -122,6 +122,14 @@ const callbackCheck = async (req, res) => {
       }
     }
 
+    res.cookie("refreshToken", refreshToken, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 1000,
+        httpOnly: true,
+        secure: false,
+        overwrite: true,
+    });
+
     return res.redirect(`${process.env.CLIENT_URL}/redirection/${accessToken}`);
   } catch (err) {
     console.error("Error in callback check:", err);
@@ -182,8 +190,8 @@ const registerUser = async (req, res) => {
     try {
         var data = req.body;
         console.log(data);
-        const emergencyRequest = new User(data);
-        await emergencyRequest.save();
+        const user = new User(data);
+        await user.save();
         return res.status(200).json({ success: true, msg: "Request Posted SuccessFully" });
     } catch (error) {
         console.log(`${error.message} (error)`.red);
@@ -191,9 +199,29 @@ const registerUser = async (req, res) => {
     }
 };
 
+const logoutUser = async (req, res) => {
+
+  try {
+      res.cookie('refreshToken', '', {
+          path: '/',
+          maxAge: 0,
+          httpOnly: true,
+          secure: false,
+          overwrite: true
+      });
+      res.redirect(process.env.CLIENT_URL + '/login');    
+
+  } catch (error) {
+      console.log(`${error.message} (error)`.red);
+      return res.status(500).json({ success: false, msg: error.message });
+  }
+
+};
+
 module.exports = {
   handleLoginRequest,
   callbackCheck,
   getUserWithAccessToken,
-  registerUser
+  registerUser,
+  logoutUser
 };

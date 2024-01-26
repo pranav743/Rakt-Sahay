@@ -74,7 +74,27 @@ const postEmergencyRequest = async (req, res) => {
 
 };
 
+const deleteEmergencyRequest = async (req, res) => {
+    try {
+        const requestId = req.body._id;
+        console.log(requestId)
+        const deletedRequest = await EmergencyBloodRequests.findByIdAndDelete({_id: requestId});
+
+        if (!deletedRequest) {
+            return res.status(404).json({ success: false, msg: "Request not found" });
+        }
+
+        return res.status(200).json({ success: true, msg: "Request deleted successfully" });
+    } catch (error) {
+        console.error(`${error.message} (error)`);
+        return res.status(500).json({ success: false, msg: "Internal Server Error" });
+    }
+};
+
+
+
 module.exports = {
     getAllEmergencyRequests,
-    postEmergencyRequest
+    postEmergencyRequest,
+    deleteEmergencyRequest
 }

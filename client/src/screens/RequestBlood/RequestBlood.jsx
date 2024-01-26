@@ -28,7 +28,7 @@ const RequestBlood = () => {
         }
         try {     
             const postedBy = {name: user.name, contact_no: user.contact_no, email: user.email}
-            const data = {postedBy, name: name, bloodType: bloodType, unitsRequested: unitsRequested, hospital: unitsRequested}
+            const data = {postedBy, name: name, bloodType: bloodType, unitsRequested: unitsRequested, hospital: hospital}
             console.log(data);
             const response = await axios.post(url + '/post-emergency-request', data);
             console.log(response.data)
@@ -106,6 +106,11 @@ const RequestBlood = () => {
 
             <Button isLoading={buttonLoading} mt={4} colorScheme='red' width={'100%'} onClick={handleRequestBlood}>
                 Request Blood
+            </Button>
+            <Button mt={4} colorScheme='gray' color={'red'} width={'100%'} border={'solid 1px red'} onClick={()=> {
+                return navigate('/past-requests');
+            }}>
+                View Past Requests
             </Button>
         </div>
     )

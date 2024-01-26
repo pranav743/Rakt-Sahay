@@ -23,9 +23,6 @@ import ChatBot from "./screens/ChatBot/Chatbot";
 import BloodBankHome from "./screens/desktop/BloodBank/Home";
 
 function App() {
-
-
-
   return (
     <Router>
       <Wrapper>

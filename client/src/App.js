@@ -20,16 +20,19 @@ import DonateBlood from "./screens/DonateBlood/DonateBlood";
 import RequestBlood from "./screens/RequestBlood/RequestBlood";
 
 function App() {
+
+
+
   return (
     <Router>
       <Wrapper>
         <Routes>
           <Route path="/donate" element={<DonateBlood />} />
-          <Route path={'/login'} exact element={<Login />} />
+          {/* <Route path={'/login'} exact element={<Login />} />
           <Route path={'/'} exact element={<Login />} />
           <Route path="/new-profile" exact element={<NewProfile />} />
-          <Route path="/user-profile" exact element={<Profile />} />
-          <Route path="/request" exact element={<RequestBlood />} />
+          <Route path="/user-profile" exact element={<Profile />} /> */}
+          {/* <Route path="/request" exact element={<RequestBlood />} /> */}
 
           {/* <Route path="/" exact element={<Splash />} />
            */}
@@ -39,10 +42,10 @@ function App() {
             <Route path="/find-donor" exact component={FindDonorPage} />
             <Route path="/request-donor" exact component={RequestDonorPage} />
           </Route> */}
-          <Route
+          {/* <Route
             path="/redirection/:accessToken"
             element={<RedirectionPage />}
-          />
+          /> */}
         </Routes>
       </Wrapper>
       <BottomNav />

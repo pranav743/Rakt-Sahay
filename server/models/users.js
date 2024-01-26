@@ -66,11 +66,11 @@ const userSchema = new mongoose.Schema({
   receivingAt: {
     hospital: {
       type: String,
-      required: [true, "Hospital email is required"],
+      required: [false, "Hospital email is required"],
     },
     hospitalName: {
       type: String,
-      required: [true, "Hospital Name is required"],
+      required: [false, "Hospital Name is required"],
     },
   },
 });

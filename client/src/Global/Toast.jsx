@@ -6,7 +6,7 @@ function showToast(toast, title, status, description) {
       status: status,
       duration: 5000,
       isClosable: true,
-      position: 'bottom-right'
+      position: 'top'
     });
   }
 

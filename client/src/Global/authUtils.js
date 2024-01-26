@@ -56,6 +56,7 @@ export const getUserDetails = async () => {
     } catch (error) {
         console.error('Error fetching user details:', error.message);
         localStorage.removeItem('RSaccessToken');
+        window.location.href = "/error";
         return false;
     }
 };

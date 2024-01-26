@@ -6,18 +6,22 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  Icon,
 } from "@chakra-ui/react";
+import { FiEdit } from "react-icons/fi";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { url } from "../../Global/URL";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { getUserDetails } from "../../Global/authUtils";
+import LogOutButton from "../../components/logOutButton";
 
+// importing data for ui
 import { places, bloodgroup } from "../newProfile/data";
 
 const Profile = () => {
-  const [editable, setEditable] = useState();
+  const [editable, setEditable] = useState(false);
 
   const navigate = useNavigate();
   const [role, setRole] = useState(false);
@@ -91,7 +95,15 @@ const Profile = () => {
             </h2>
             <AccordionPanel>
               <div className="flex flex-col gap-4 items-center relative">
-                {/* ... */}
+                <h1 className="text-3xl font-bold text-[#EA3A60]">
+                  Your Profile
+                </h1>
+                {!editable && (
+                  <FiEdit
+                    className="text-[#EA3A60] text-2xl absolute top-2 right-4"
+                    onClick={() => setEditable(!editable)}
+                  />
+                )}
                 <input
                   readOnly
                   className="p-3 rounded-xl border-solid border-[#EA3A60] border-b-2 text-xl w-3/4 max-w-md"
@@ -200,12 +212,14 @@ const Profile = () => {
                   value={data.idCardNumber}
                 />
                 {/* ... */}
-                <button
-                  // onClick={() => setEditable(false)}
-                  className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold"
-                >
-                  Save Changes
-                </button>
+                {editable && (
+                  <button
+                    onClick={() => setEditable(false)}
+                    className="p-4 rounded-xl mt-8 w-full max-w-md bg-[#EA3A60] text-white text-xl font-bold"
+                  >
+                    Save Changes
+                  </button>
+                )}
               </div>
             </AccordionPanel>
           </AccordionItem>
@@ -223,13 +237,11 @@ const Profile = () => {
               </AccordionButton>
             </h2>
             <AccordionPanel>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi
-              earum sed, assumenda tenetur excepturi suscipit et qui quaerat,
-              soluta repudiandae praesentium id corporis. Modi exercitationem
-              odio illum explicabo voluptates, optio et laboriosam similique,
-              est nisi amet architecto maxime officiis libero, magni ducimus
-              nostrum. Amet molestiae officia recusandae, placeat incidunt
-              eveniet.
+              {data.donations.length > 0 ? (
+                <div></div>
+              ) : (
+                <div>No Donations</div>
+              )}
             </AccordionPanel>
           </AccordionItem>
           {/* ... */}

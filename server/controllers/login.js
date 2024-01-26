@@ -123,11 +123,11 @@ const callbackCheck = async (req, res) => {
     }
 
     res.cookie("refreshToken", refreshToken, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 1000,
-        httpOnly: true,
-        secure: false,
-        overwrite: true,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 1000,
+      httpOnly: true,
+      secure: false,
+      overwrite: true,
     });
 
     return res.redirect(`${process.env.CLIENT_URL}/redirection/${accessToken}`);
@@ -187,35 +187,34 @@ const getUserWithAccessToken = async (req, res) => {
 };
 
 const registerUser = async (req, res) => {
-    try {
-        var data = req.body;
-        console.log(data);
-        const user = new User(data);
-        await user.save();
-        return res.status(200).json({ success: true, msg: "Request Posted SuccessFully" });
-    } catch (error) {
-        console.log(`${error.message} (error)`.red);
-        return res.status(400).json({ success: false, msg: error.message });
-    }
+  try {
+    var data = req.body;
+    console.log(data);
+    const user = new User(data);
+    await user.save();
+    return res
+      .status(200)
+      .json({ success: true, msg: "Request Posted SuccessFully" });
+  } catch (error) {
+    console.log(`${error.message} (error)`.red);
+    return res.status(400).json({ success: false, msg: error.message });
+  }
 };
 
 const logoutUser = async (req, res) => {
-
   try {
-      res.cookie('refreshToken', '', {
-          path: '/',
-          maxAge: 0,
-          httpOnly: true,
-          secure: false,
-          overwrite: true
-      });
-      res.redirect(process.env.CLIENT_URL + '/login');    
-
+    res.cookie("refreshToken", "", {
+      path: "/",
+      maxAge: 0,
+      httpOnly: true,
+      secure: false,
+      overwrite: true,
+    });
+    res.redirect(process.env.CLIENT_URL + "/login");
   } catch (error) {
-      console.log(`${error.message} (error)`.red);
-      return res.status(500).json({ success: false, msg: error.message });
+    console.log(`${error.message} (error)`.red);
+    return res.status(500).json({ success: false, msg: error.message });
   }
-
 };
 
 module.exports = {
@@ -223,5 +222,5 @@ module.exports = {
   callbackCheck,
   getUserWithAccessToken,
   registerUser,
-  logoutUser
+  logoutUser,
 };

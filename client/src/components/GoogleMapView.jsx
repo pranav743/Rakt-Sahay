@@ -1,22 +1,26 @@
-// import { GoogleMap, LoadScript } from '@react-google-maps/api'
-// import React from 'react'
+import { GoogleMap, LoadScript ,MarkerF} from '@react-google-maps/api'
+import React from 'react'
 
-// const GoogleMapView = () => {
+const GoogleMapView = ({userLocation}) => {
   
-//     const mapContainerStyle={
-//         width:'100%',
-//         height:'70vh'
-//     }
-    
-//     const cordinate={lat:-34.397,lng:150.644}
-//     return (
-//     <div >
-//         <LoadScript googleMapsApiKey={process.env.NEXT_PUBLI}>
-//              <GoogleMap mapContainerStyle={} center={}>
-//              </GoogleMap>
-//         </LoadScript>
-//     </div>
-//   )
-// }
+    const ContainerStyle={
+        width:'100%',
+        height:'50vh'
+    }
 
-// export default GoogleMapView
+    
+    // const cordinate={lat:-34.397,lng:150.644}
+    console.log('USERLOCATION',userLocation);
+
+    return (
+    <div >
+        <LoadScript googleMapsApiKey='AIzaSyCBsEwnTS9s-IvZmvirO4t9OIT9VEs4UAU'>
+             <GoogleMap mapContainerStyle={ContainerStyle} center={userLocation} zoom={13}>
+               <MarkerF position={userLocation} />
+             </GoogleMap>
+        </LoadScript>
+    </div>
+  )
+}
+
+export default GoogleMapView

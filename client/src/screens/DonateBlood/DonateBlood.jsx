@@ -4,11 +4,27 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { MdBloodtype } from "react-icons/md";
 import { BiSolidDonateBlood } from "react-icons/bi";
-// import GoogleMapView from '../../components/GoogleMapView';
+import GoogleMapView from '../../components/GoogleMapView';
 
 const DonateBlood = () => {
   
-    const data = [
+  const [userLocation,setUserLocation]=useState([]);
+
+  const getUserLocation = ()=>{
+    navigator.geolocation.getCurrentPosition((pos)=>{
+    //  console.log(pos)
+     setUserLocation({
+       lat:pos.coords.latitude,
+       lng:pos.coords.longitude
+     })
+    })
+ }
+
+ useEffect(()=>{
+     getUserLocation();
+ },[])
+
+  const data = [
         {
           name: 'Emilia Parkir',
           HospitalName: 'Sarana Hospital, Kalyan',
@@ -131,9 +147,26 @@ const DonateBlood = () => {
         </TabList>
         <TabPanels  p={0}>
             <TabPanel p={0}>
-              <Box >
-                 {/* <GoogleMapView/> */}
-              </Box>
+            <Card maxW='sm' border='1px solid #EA3A60' justifyContent='center' justifyItems='center' padding={0}>
+                <CardBody justifyContent='center' justifyItems='center' alignItems='center' padding={1}>
+                   <GoogleMapView userLocation={userLocation}/>
+                </CardBody>
+              </Card>
+              <Card maxW='sm' border='1px solid #EA3A60' justifyContent='center' justifyItems='center' padding={0} marginTop={2}>
+                <CardBody justifyContent='center' justifyItems='center' alignItems='center' padding={1}>
+                   <Text className='text-center font-bold font-lg'>SARANA HOSPITAL</Text>
+                   <Flex justify='space-between'>
+                                    <Flex direction='column' padding={0}>
+                                        <Flex alignItems='center'><FaMapMarkerAlt size={15} color='#EA3A60'/><Text className='ml-2 text-black font-semibold'>421204</Text></Flex>
+                                        <Flex alignItems='center'><FaPhone size={15} color='#EA3A60'/><Text className='ml-2 text-black font-semibold'>9082049861</Text></Flex>
+                                    </Flex>
+                                    <Flex direction='column' padding={0}>
+                                        <Flex alignItems='center'><MdBloodtype size={15} color='#EA3A60'/><Text className='ml-2 text-black font-semibold'>9:30</Text></Flex>
+                                        <Flex alignItems='center'><BiSolidDonateBlood size={15} color='#EA3A60'/><Text className='ml-2 text-black font-semibold'>Email</Text></Flex>
+                                   </Flex>
+                    </Flex>
+                </CardBody>
+              </Card>
             </TabPanel>
 
             {/* PART TWO */}
@@ -164,8 +197,6 @@ const DonateBlood = () => {
                         </CardBody>
                     </Card>
                   )})}
-
-                    
                 </Stack>
              </TabPanel>
 

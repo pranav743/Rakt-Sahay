@@ -18,6 +18,8 @@ const BottomNav = () => {
       return false;
     } else if (location.pathname === "/new-profile") {
       return false;
+    } else if (location.pathname === "/") {
+      return false;
     } else {
       return true;
     }

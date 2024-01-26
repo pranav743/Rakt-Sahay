@@ -63,6 +63,7 @@ const postEmergencyRequest = async (req, res) => {
 
     try {
         var data = req.body;
+        console.log(data);
         const emergencyRequest = new EmergencyBloodRequests(data);
         await emergencyRequest.save();
         return res.status(200).json({ success: true, msg: "Requested Posted SuccessFully" });

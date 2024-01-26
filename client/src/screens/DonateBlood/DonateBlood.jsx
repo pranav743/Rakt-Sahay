@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { MdBloodtype } from "react-icons/md";
 import { BiSolidDonateBlood } from "react-icons/bi";
-import GoogleMapView from '../../components/GoogleMapView';
+// import GoogleMapView from '../../components/GoogleMapView';
 
 const DonateBlood = () => {
   
@@ -132,7 +132,7 @@ const DonateBlood = () => {
         <TabPanels  p={0}>
             <TabPanel p={0}>
               <Box >
-                 <GoogleMapView/>
+                 {/* <GoogleMapView/> */}
               </Box>
             </TabPanel>
 

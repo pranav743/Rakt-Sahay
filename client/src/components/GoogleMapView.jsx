@@ -11,9 +11,8 @@
 //     const cordinate={lat:-34.397,lng:150.644}
 //     return (
 //     <div >
-//         <LoadScript googleMapsApiKey={process.env.}>
+//         <LoadScript googleMapsApiKey={process.env.NEXT_PUBLI}>
 //              <GoogleMap mapContainerStyle={} center={}>
-                  
 //              </GoogleMap>
 //         </LoadScript>
 //     </div>

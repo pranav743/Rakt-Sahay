@@ -20,6 +20,7 @@ import DonateBlood from "./screens/DonateBlood/DonateBlood";
 import RequestBlood from "./screens/RequestBlood/RequestBlood";
 import PastRequests from "./screens/RequestBlood/PastRequests";
 import ChatBot from "./screens/ChatBot/Chatbot";
+import BloodBankHome from "./screens/desktop/BloodBank/Home";
 
 function App() {
 
@@ -36,6 +37,8 @@ function App() {
           <Route path="/user-profile" exact element={<Profile />} />
           <Route path="/request" exact element={<RequestBlood />} />
           <Route path="/past-requests" exact element={<PastRequests />} />
+          <Route path="/blood-bank/home" exact element={<BloodBankHome/>} />
+
 
           <Route path="/" exact element={<Splash />} />
 

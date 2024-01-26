@@ -35,7 +35,7 @@ const emergencyBloodRequests = new mongoose.Schema({
   },
   requestStatus: {
     type: String,
-    enum: ["Pending", "Accepted", "Rejected"],
+    enum: ["Pending", "Accepted", "Completed"],
     default: "Pending",
   },
   fullfilled: {
@@ -43,8 +43,14 @@ const emergencyBloodRequests = new mongoose.Schema({
     default: false,
   },
   fullfilledBy: {
-    type: Boolean,
-    required: false,
+    email: {
+      type: String,
+      required: [false, "Email of donor is required"],
+    },
+    name: {
+      type: String,
+      required: [false, "Name of donor is required"],
+    },
   },
   isTaken: {
     type: Boolean,
@@ -59,6 +65,10 @@ const emergencyBloodRequests = new mongoose.Schema({
       type: String,
       required: [false, "Name of donor is required"],
     },
+    contact_no: {
+      type: String,
+      required: [false, "Contact of donor is required"],
+    }
   },
 });
 

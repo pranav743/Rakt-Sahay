@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  idCardNumber: {
+    type: String,
+    required: true,
+  },
   bloodType: {
     type: String,
     enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],

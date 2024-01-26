@@ -10,6 +10,8 @@ router.get("/post-emergency-requests", controllerEmergencyRequests.postEmergency
 
 
 router.post("/anyuser", controllerLogin.getUserWithAccessToken);
+router.post("/register-user", controllerLogin.registerUser);
+
 
 
 

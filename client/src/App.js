@@ -35,10 +35,10 @@ function App() {
             <Route path="/find-donor" exact component={FindDonorPage} />
             <Route path="/request-donor" exact component={RequestDonorPage} />
           </Route> */}
-          {/* <Route
+          <Route
             path="/redirection/:accessToken"
             element={<RedirectionPage />}
-          /> */}
+          />
         </Routes>
       </Wrapper>
       <BottomNav />

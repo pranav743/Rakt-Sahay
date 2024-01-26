@@ -48,7 +48,7 @@ function App() {
           <Route
             path="/redirection/:accessToken"
             element={<RedirectionPage />}
-          /> */}
+          /> 
         </Routes>
       </Wrapper>
       <BottomNav />

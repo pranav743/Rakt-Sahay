@@ -19,6 +19,7 @@ import Splash from "./screens/Splash/splash";
 import DonateBlood from "./screens/DonateBlood/DonateBlood";
 import RequestBlood from "./screens/RequestBlood/RequestBlood";
 import PastRequests from "./screens/RequestBlood/PastRequests";
+import ChatBot from "./screens/ChatBot/Chatbot";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/donate" element={<DonateBlood />} />
           <Route path={'/login'} exact element={<Login />} />
-          <Route path={'/'} exact element={<Login />} />
+          <Route path={'/'} exact element={<ChatBot />} />
           <Route path="/new-profile" exact element={<NewProfile />} />
           <Route path="/user-profile" exact element={<Profile />} />
           <Route path="/request" exact element={<RequestBlood />} />

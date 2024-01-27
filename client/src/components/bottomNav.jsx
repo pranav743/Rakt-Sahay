@@ -18,7 +18,9 @@ const BottomNav = () => {
       return false;
     } else if (location.pathname === "/new-profile") {
       return false;
-    } else if (location.pathname === "/") {
+    } else if (location.pathname === "/chat-bot") {
+      return false;
+    } else if (location.pathname === "/blood-bank/home") {
       return false;
     } else {
       return true;

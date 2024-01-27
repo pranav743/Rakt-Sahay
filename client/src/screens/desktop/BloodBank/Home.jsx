@@ -7,6 +7,7 @@ import { url } from '../../../Global/URL';
 import axios from 'axios';
 import { getUserDetails } from '../../../Global/authUtils';
 import { Flex, Text, Badge, Spacer } from '@chakra-ui/react';
+import Nav from './Navbar/Navbar';
 
 function combineBloodData(hospitalData, bloodBankData) {
     const bloodBankMap = new Map(bloodBankData.map(({ bloodType, unitsAvailable }) => [bloodType, unitsAvailable]));
@@ -70,8 +71,8 @@ const BloodBankHome = () => {
         getHospitals();
     }, []);
 
-    return (
-
+    return (<>
+        <Nav data={user}/>
         <Grid
             h="auto"
             gap={4}
@@ -128,6 +129,7 @@ const BloodBankHome = () => {
 
 
         </Grid>
+    </>
     );
 };
 

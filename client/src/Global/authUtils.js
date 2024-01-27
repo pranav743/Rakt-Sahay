@@ -9,7 +9,7 @@ export const logout = async () => {
     try {
         localStorage.removeItem('RSaccessToken');
         window.location.assign(url + '/logout');
-        window.location.reload();
+        window.location.href = '/login';
     } catch (error) {
         console.log("Could not Logout !");
     }   

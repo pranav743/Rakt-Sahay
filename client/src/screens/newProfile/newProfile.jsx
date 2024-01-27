@@ -4,9 +4,11 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { bloodgroup, places } from "./data";
 import { url } from "../../Global/URL";
+import { useNavigate } from "react-router-dom";
 
 const NewProfile = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const encodedUserInfo = queryParams.get("userInfo");
   const userInfo = JSON.parse(decodeURIComponent(encodedUserInfo));
@@ -50,6 +52,8 @@ const NewProfile = () => {
       console.log(Userdetails);
       const res = await axios.post(url + "/register-user", Userdetails);
       console.log(res.data);
+      navigate('/user-profile');
+      
     } catch (error) {
       console.log(error);
     }

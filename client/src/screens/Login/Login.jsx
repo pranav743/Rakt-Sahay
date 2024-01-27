@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleButton from "react-google-button";
-import { Center, Square, Circle, Box ,Card,CardBody,Flex,Text,Divider} from "@chakra-ui/react";
+import { Center, Square, Circle, Box, Divider ,Card,CardBody,Flex,Text,Divider} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { url } from "../../Global/URL";
 import LOGO from "../../Images/LOGO.jpeg"
+import showToast from "../../Global/Toast";
+import { useToast } from "@chakra-ui/react";
 
 const Login = () => {
   const navigate = useNavigate();
+  const toast = useToast();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   const googleAuth = () => {
-    window.location.href = url + "/login";
+    if (isChecked) {
+      // Perform the login action
+      window.location.href = url + "/login";
+    } else {
+      showToast(toast, "", "info", "Please Accept Terms and Conditions !");
+      console.log("Please accept the terms and conditions.");
+    }
   };
 
   return (

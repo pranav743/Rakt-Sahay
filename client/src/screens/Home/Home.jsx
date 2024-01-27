@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Tag,
@@ -31,17 +31,24 @@ import "swiper/css/pagination";
 import { getUserDetails } from "../../Global/authUtils";
 
 const Home = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(false);
   const navigate = useNavigate();
 
   const getData = async () => {
-    const data = await getUserDetails();
-    console.log(data);
-    setUser(data);
+    try {
+      const data = await getUserDetails();
+      console.log(data);
+      setUser(data);
+    } catch (error) {
+      navigate('/login');
+    }
+    if (!localStorage.getItem("RSaccessToken")){
+      navigate('/login');
+    }
   }
-  useEffect(()=> {
+  useEffect(() => {
     getData();
-  },[]);
+  }, []);
   return (
     <Stack backgroundColor="">
       <NavLink to="/chat-bot">
@@ -49,13 +56,13 @@ const Home = () => {
       </NavLink>
       <Flex justify="space-between">
         <Tag size="lg" colorScheme="red" borderRadius="8px">
-          <Avatar
+          {user && <Avatar
             src={user.profilePicture}
             size="xs"
             name="Segun Adebayo"
             ml={-1}
             mr={2}
-          />
+          />}
           {user && <TagLabel className="font-bold">Welcome, {user.name}</TagLabel>}
         </Tag>
         <HiOutlineBellAlert size={30} color="#EA3A60" />
@@ -100,7 +107,7 @@ const Home = () => {
               <Image
 
                 src={Donate}
-                onClick={()=>navigate('/donate')}
+                onClick={() => navigate('/donate')}
                 alt="Donate Blood"
                 objectFit="contain"
                 width="40%"
@@ -119,7 +126,7 @@ const Home = () => {
             <CardBody>
               <Image
                 src={Request}
-                onClick={()=>navigate('/request')}
+                onClick={() => navigate('/request')}
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
                 objectFit="contain"

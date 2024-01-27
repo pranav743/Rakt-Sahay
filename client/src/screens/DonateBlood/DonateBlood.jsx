@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Location, useLocation } from "react-router-dom";
 import {
   Tab,
   Tabs,
@@ -32,6 +33,7 @@ import CardTwo from "./CardTwo";
 
 const DonateBlood = () => {
   const [userLocation, setUserLocation] = useState([]);
+  const location = useLocation();
 
   const getUserLocation = () => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -213,6 +215,17 @@ const DonateBlood = () => {
     lat: parseFloat(item.location.lat),
     lng: parseFloat(item.location.lng),
   }));
+
+  const [hasReloaded, setHasReloaded] = useState(false);
+
+  // useEffect(() => {
+  //   if (!hasReloaded) {
+  //     // Reload the current page
+  //     window.location.reload();
+  //     // Set the state to prevent further reloads
+  //     setHasReloaded(true);
+  //   }
+  // }, [hasReloaded]);
 
   // console.log(places);
 

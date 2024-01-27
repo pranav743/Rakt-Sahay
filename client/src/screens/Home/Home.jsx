@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Tag,
   Flex,
@@ -28,8 +28,20 @@ import { FaPhone } from "react-icons/fa6";
 import { HiChatAlt } from "react-icons/hi";
 import "swiper/css";
 import "swiper/css/pagination";
+import { getUserDetails } from "../../Global/authUtils";
 
 const Home = () => {
+  const [user, setUser] = useState();
+  const navigate = useNavigate();
+
+  const getData = async () => {
+    const data = await getUserDetails();
+    console.log(data);
+    setUser(data);
+  }
+  useEffect(()=> {
+    getData();
+  },[]);
   return (
     <Stack backgroundColor="">
       <NavLink to="/chat-bot">
@@ -38,13 +50,13 @@ const Home = () => {
       <Flex justify="space-between">
         <Tag size="lg" colorScheme="red" borderRadius="8px">
           <Avatar
-            src="https://bit.ly/sage-adebayo"
+            src={user.profilePicture}
             size="xs"
             name="Segun Adebayo"
             ml={-1}
             mr={2}
           />
-          <TagLabel className="font-bold">Welcome,Vishal</TagLabel>
+          {user && <TagLabel className="font-bold">Welcome, {user.name}</TagLabel>}
         </Tag>
         <HiOutlineBellAlert size={30} color="#EA3A60" />
       </Flex>
@@ -86,7 +98,9 @@ const Home = () => {
               alignItems="center"
             >
               <Image
+
                 src={Donate}
+                onClick={()=>navigate('/donate')}
                 alt="Donate Blood"
                 objectFit="contain"
                 width="40%"
@@ -105,6 +119,7 @@ const Home = () => {
             <CardBody>
               <Image
                 src={Request}
+                onClick={()=>navigate('/request')}
                 alt="Green double couch with wooden legs"
                 borderRadius="lg"
                 objectFit="contain"

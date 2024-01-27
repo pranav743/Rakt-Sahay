@@ -16,7 +16,7 @@ const RedirectionPage = () => {
             const role = data.data.msg.role;
             console.log(role);
             if (role === 'USER'){
-                navigate('/home');
+                navigate('/');
             } else if( role === 'HOSPITAL'){
                 navigate('/hospital/home');
             } else if( role === 'BLOODBANK'){

@@ -7,6 +7,7 @@ import {
   AccordionIcon,
   Box,
   Icon,
+  Button
 } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/fi";
 import { useQuery } from "@tanstack/react-query";
@@ -14,7 +15,7 @@ import axios from "axios";
 import { url } from "../../Global/URL";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader";
-import { getUserDetails } from "../../Global/authUtils";
+import { getUserDetails, logout } from "../../Global/authUtils";
 import LogOutButton from "../../components/logOutButton";
 
 // importing data for ui
@@ -246,6 +247,9 @@ const Profile = () => {
           </AccordionItem>
           {/* ... */}
         </Accordion>
+        <Button mt={4} colorScheme='red' width={'100%'} onClick={()=>logout()}>
+                Logout
+            </Button>
       </div>
     </div>
   );

@@ -247,9 +247,9 @@ const Profile = () => {
           </AccordionItem>
           {/* ... */}
         </Accordion>
-        <Button mt={4} colorScheme='red' width={'100%'} onClick={()=>logout()}>
-                Logout
-            </Button>
+        <Button mt={4} colorScheme='red' width={'100%'} onClick={() => logout()}>
+          Logout
+        </Button>
       </div>
     </div>
   );

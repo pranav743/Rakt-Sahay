@@ -47,7 +47,8 @@ const Wrapper = ({ children }) => {
         minHeight:
           location.pathname === "/login" ||
           location.pathname === "/new-profile" ||
-          location.pathname === "/chat-bot"
+          location.pathname === "/chat-bot" ||
+          location.pathname === "/blood-bank/home"
             ? "100vh"
             : "calc(100vh - 82px)",
         overflowY: "auto",

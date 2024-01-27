@@ -1,24 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleButton from "react-google-button";
-import { Center, Square, Circle, Box } from "@chakra-ui/react";
+import { Center, Square, Circle, Box, Divider } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { url } from "../../Global/URL";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   const googleAuth = () => {
-    window.location.href = url + "/login";
+    if (isChecked) {
+      // Perform the login action
+      window.location.href = url + "/login";
+    } else {
+      // Display an error message or handle accordingly
+      console.log("Please accept the terms and conditions.");
+    }
   };
 
   return (
     <div className="flex-col items-center justify-center mx-auto">
-      <div className="mt-[50%] p-3 bg-red-500 rounded-[8px] w-[90%] flex-col items-center justify-center mx-auto">
-        <p className="text-3xl font-bold text-center">Login</p>
-        <GoogleButton onClick={googleAuth} className="mt-5 mx-auto" />
+      <div className="mt-10 p-6 bg-white rounded-md shadow-lg w-80 sm:w-96 mx-auto text-center">
+        <h2 className="text-4xl font-extrabold text-gray-800">Welcome to <span style={{ color: 'red' }}>Rakt</span> Sahay!</h2>
+        <Divider mt={10}/>
+        <p className="text-lg text-gray-600 mt-2">
+          Sign in to your account to continue.
+        </p>
+        <div style={{height: '50px'}}></div>
+        <GoogleButton onClick={googleAuth} style={{ borderRadius: '20px', backgroundColor: 'white', color: 'black', paddingRight: '10px', paddingLeft: '10px' }} className="mt-6 mx-auto" />
+        <div className="flex items-center justify-center mt-4">
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+            className="mr-2 cursor-pointer"
+          />
+          <p className="text-sm text-gray-500">
+            I agree to the{' '}
+            <span className="text-blue-500 cursor-pointer">Terms and Conditions</span>
+          </p>
+        </div>
+        
       </div>
-      <p className="font-semibold text-lg ml-6 mt-2">
-        Not Regitered <span className="text-blue-400">SignIn</span>
-      </p>
     </div>
   );
 };
